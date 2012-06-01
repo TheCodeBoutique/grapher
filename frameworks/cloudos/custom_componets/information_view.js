@@ -11,7 +11,7 @@ COS.InformationView = SC.View.extend({
   childViews: ['guideView', 'detailedInformationView'],
     
   guideView: SC.View.design({
-    classNames: ['opaqueBase', 'standardRadius', 'innerShadow', ],
+    classNames: ['opaqueBase', 'standardRadius', 'innerShadow' ],
     layout: { top: 40, left: 10, height: 95, width: 120 },
       
     render: function(context){

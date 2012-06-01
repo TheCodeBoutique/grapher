@@ -9,7 +9,7 @@ COS.clusterGraph = SC.Page.design ({
     
     application: SC.View.design({
       classNames: ['silver_gradient', 'standardRadius', 'z_5'],
-      layout: { centerX: 0, centerY: 0, height: 50, width: 400 },
+      layout: { centerX: -25, centerY: 5, height: 50, width: 450 },
       childViews: ['applicationLabel'],
       
       applicationLabel: SC.LabelView.design({
