@@ -1,0 +1,48 @@
+/* ==========================================================================
+*  Project:   TCBTheme Theme Styles
+*  Copyright: @2012 The Code Boutique, Inc.
+*  ==========================================================================
+*/
+
+/* 
+  Place any styles you want to define in this file.  You can also break your
+  styles into multiple files.  Just add them to your resources or .lrpoj
+  directories to be included in the build.
+*/
+
+
+@-webkit-keyframes loading {
+  0% { color: #E7E7EA; }
+  50% { color: #E7E7EA; }
+  100% { color: #E7E7EA; }
+}
+
+#loading {
+  background: #E7E7EA;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #E7E7EA), color-stop(0.5, #E7E7EA), color-stop(1.0, #E7E7EA));
+  background-image: -moz-linear-gradient(top, #E7E7EA, #E7E7EA, #E7E7EA);
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#loading p.loading {
+  background-color: none;
+  background-repeat: no-repeat;
+  background-position: 20px 10px;
+  bottom: -10px; /* hide inner shadow */
+  color: transparent;
+  font-family: Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  height: 33px;
+  left: -10px; /* hide inner shadow */
+  margin: 0;
+  padding-left: 44px;
+  padding-top: 10px;
+  position: absolute;
+  right: -10px;
+}

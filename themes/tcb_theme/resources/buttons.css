@@ -1,0 +1,9 @@
+.empty_button.sc-button-view.sc-regular-size.square,
+.empty_button.sc-button-view.sc-regular-size.square:hover,
+.empty_button.sc-button-view.sc-regular-size.square.active,
+.empty_button.sc-button-view.sc-regular-size.square .sc-button-label
+.empty_button.sc-button-view.sc-regular-size.square .sc-button-inner,
+.empty_button.sc-button-view.sc-regular-size.square .sc-button-label {
+   cursor: pointer;
+   text-align: center;
+}

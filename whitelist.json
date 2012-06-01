@@ -1,0 +1,130 @@
+{
+    "/nodegraph": ".*",
+
+		"/cloudos": ".*",
+	
+		"/tcb_theme": ".*",
+
+			"/sproutcore/jquery": ".*",
+			"/sproutcore/foundation": ".*",
+			"/sproutcore/core_foundation": ".*",
+			"/sproutcore/routing": ".*",
+			"/sproutcore/datastore": ".*",
+
+			"/sproutcore/ajax": [
+				"system/request.js",
+				"system/response"
+			],
+			
+			"/sproutcore/core_foundation/views": [
+			  "view.js",
+			  "view/acceleration.js",
+			  "view/animation.js",
+			  "view/base.js",
+			  "view/cursor.js",
+			  "view/enabled.js",
+			  "view/keyboard.js",
+			  "view/layout.js",
+			  "view/layout_style.js",
+			  "view/manipulation.js",
+			  "view/theming.js",
+			  "view/touch.js",
+			  "view/visibility.js"
+			],
+
+
+		 	"/sproutcore/desktop": [
+				"core.js",
+				"mixins/collection_group.js",
+			 	"mixins/collection_row_delegate.js",
+			 	"mixins/collection_view_delegate.js",
+			 	"mixins/scrollable.js",
+				"panes/modal.js",
+			 	"panes/palette.js",
+			 	"panes/panel.js",
+			 	"protocols/responder.js",
+			 	"render_delegates/helpers.*",
+			 	"render_delegates/button.js",
+			 	"render_delegates/checkbox.js",
+			 	"render_delegates/collection.js",
+			 	"render_delegates/radio.js",
+			 	"render_delegates/radio_group.js",
+			 	"render_delegates/panel.js",
+			 	"render_delegates/toolbar.js",
+				"resources/list_item.css",
+				"resources/radio.css",
+				"resources/radio_view.css",
+			 	"system/key_bindings.js",
+			 	"system/drag.js",
+			 	"views/button.js",
+				"views/checkbox.js",
+				"views/collection.js",
+				"views/grid.js",
+				"views/list.js",
+				"views/list_item.js",
+				"views/radio.js",
+				"views/scroll.js",
+				"views/scroller.js",
+				"views/thumb.js",
+				"views/toolbar.js"
+			],
+
+		"/sproutcore/runtime": [
+			"core.js",
+			"ext/array.js",
+			"ext/function.js",
+			"ext/string.js",
+			"mixins/array.js",
+			"mixins/copyable.js",
+			"mixins/enumerable.js",
+			"mixins/freezable.js",
+			"mixins/observable.js",
+			"private/chain_observer.js",
+			"private/observer_queue.js",
+			"private/observer_set.js",
+			"system/binding.js",
+			"system/enumerator.js",
+			"system/error.js",
+			"system/function.js",
+			"system/index_set.js",
+			"system/json.js",
+			"system/logger.js",
+			"system/object.js",
+			"system/range_observer.js",
+			"system/run_loop.js",
+			"system/set.js",
+			"system/string.js"												
+		],
+
+		"/sproutcore/datetime/core": [
+			"frameworks/core/system"
+		],
+
+		"/sproutcore/statechart": [
+			"core.js",
+			"ext/function.js",
+			"mixins/statechart_delegate.js",
+			"private/state_path_matcher.js",
+			"system/async.js",
+			"system/empty_state.js",
+			"system/history_state.js",
+			"system/state.js",
+			"system/state_route_handler_context.js",
+			"system/statechart.js"			
+		],
+
+		"/sproutcore/bootstrap": [
+			"core.js",
+			"setup_body_class_names.js",
+			"system/bench.js",
+			"system/browser.js",
+			"system/loader.js"
+		],
+
+		"/sproutcore/yuireset": [
+			"resources/core.css",
+			"resources/view.css"
+		]
+
+
+}
