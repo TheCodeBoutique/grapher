@@ -2,6 +2,8 @@
     "/nodegraph": ".*",
 
 		"/cloudos": ".*",
+		
+		"/external": ".*",
 	
 		"/tcb_theme": ".*",
 
