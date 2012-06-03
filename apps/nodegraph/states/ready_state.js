@@ -4,6 +4,10 @@ Nodegraph.ReadyState = SC.State.extend({
     Nodegraph.getPath('mainPage.mainPane').append();
     Nodegraph.viewsController.set('currentView', COS.clusterGraph.interfaceView);
 		this.invokeLater(this.fadeIn, 500);
+
+      var query = SC.Query.local(Nodegraph.Utilities);
+      Nodegraph.utillitiesController.set('content',Nodegraph.store.find(query));
+
   },
 
 	fadeIn: function() {

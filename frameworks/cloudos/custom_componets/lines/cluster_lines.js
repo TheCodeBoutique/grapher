@@ -5,113 +5,77 @@
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
-COS.ClusterLines = COS.CanvasView.extend({
-    /** @scope COS.ClusterLines.prototype */
-    layout: { top: 0, left: 0, bottom: 0, right: 0 },
-    yPos: 300,
-    box1PosY: 120,
-    box2PosY: 432,
-    draw: function() {
-        // Get canvas.  Needed to draw on.
-        var left = 290;
-        var height = -50;
-        var yPos = this.get('yPos');
-        var boxLeft = 268;
-        var boxPosY = 216;
+COS.ClusterLines = SC.View.extend({
+    layout: { centerX: 0, centerY: 0, left: 0, right: 0},
+    layerId: "",
+    fill: "",
+    stroke: "",
+    image: "",
+    paper: null,
+    text: '',
 
-        for (var i = 0; i < 8; i++) {
-            var canvas = this.get('canvas');
-            if (!canvas) return;
-
-            console.log("boxLeft",boxLeft);
-            console.log("left",boxLeft);
-
-
-            if (i >= 4) {
-                left = 455;
-                boxLeft = 434;
-                for (i; i < 8; i++) {
-
-                    height += 40;
-                    left += 56;
-
-                    boxLeft += 56;
-                    boxPosY += 42;
-
-                    var context = canvas.getContext('2d');
-                    context.clearRect(0, 0, 100, 100);
-                    context.fillStyle = "#666666";
-                    context.fillRect(left, yPos, 5, height);
-
-                    //one box
-                    context.beginPath();
-                    context.rect(boxLeft, boxPosY, 44, 44);
-                    context.fillStyle = '#6fee6f';
-                    context.fill();
-                    context.lineWidth = 1;
-                    context.strokeStyle = '666666';
-                    context.stroke();
-
-                    //bottom box
-                    context.beginPath();
-                    context.rect(boxLeft, boxPosY, 44, 44);
-                    context.fillStyle = '#6fee6f';
-                    context.fill();
-                    context.lineWidth = 1;
-                    context.strokeStyle = '666666';
-                    context.stroke();
-                }
-            }
+    /**
+     * Create nodes - to create nodes simple add a new paper.rect with the cords that you want to position
+     * your line. ie - paper.rect(x,y,height,width)
+     * add attr to give it a color using fill, combine att with rect to build svg
+     * paper.rect().attr('fill', 'fff')
+     */
+    didCreateLayer: function() {
+        var paper = Raphael(0, 0, window.screen.width, window.screen.height); //build canvas
+        var line = paper.rect(540, 220, 10, 90).attr("fill", "#666666");
+        this.set('paper', paper);
 
 
-            var context = canvas.getContext('2d');
-            context.clearRect(0, 0, 100, 100);
-            context.fillStyle = "#666666";
-            context.fillRect(left, yPos, 5, height);
+        //rect is 15 less the line
+        var leftBox = 525;
+        var heightBox = 200;
+        var lineLeft = 540;
+        var lineYpos = 220;
+        var lineHeight = 90;
+        var i = 0;
+        //go up
+        for (i; i < 5; i++) {
+            paper.rect(lineLeft, lineYpos, 10, lineHeight).attr("fill", "#666666");
+            paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+                var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
+                var tip = SC.$('#tip');
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            }).mouseout(function(e) {
+                    var tip = SC.$('#tip');
+                    tip.css('visibility', 'hidden');
+                });
 
-            //one box
-            context.beginPath();
-            context.rect(boxLeft, boxPosY, 44, 44);
-            context.fillStyle = '#6fee6f';
-            context.fill();
-            context.lineWidth = 1;
-            context.strokeStyle = '666666';
-            context.stroke();
+            leftBox += 50;
+            lineLeft += 50;
+            lineYpos -= 20;
+            heightBox -= 20;
+            lineHeight += 20;
 
-            //bottom box
-            context.beginPath();
-            context.rect(boxLeft, boxPosY, 44, 44);
-            context.fillStyle = '#6fee6f';
-            context.fill();
-            context.lineWidth = 1;
-            context.strokeStyle = '666666';
-            context.stroke();
-
-
-            boxPosY -= 42;
-            left += 56;
-            height -= 40;
-
-            boxLeft += 56;
         }
 
-        //draw angles
-        context.clearRect(0, 0, 100, 100);
-        context.fillStyle = "#cccccc";
-        context.rotate(Math.PI / 4);
-        context.fillRect(710, -290, 5, -125);
+        //go down
+        for (i; i < 11; i++) {
+            paper.rect(lineLeft, lineYpos, 10, lineHeight).attr("fill", "#666666");
+            paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+                var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
+                var tip = SC.$('#tip');
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            }).mouseout(function(e) {
+                    var tip = SC.$('#tip');
+                    tip.css('visibility', 'hidden');
+                });
 
-        //circle
-        context.beginPath();
-        context.arc(710, -415,  20, 0 , 2 * Math.PI, false);
-        context.closePath();
-        context.lineWidth = 1;
-        context.fillStyle = "#6fee6f";
-        context.fill();
-        context.strokeStyle = "666666";
-        context.stroke();
+            leftBox += 50;
+            lineLeft += 50;
+            lineYpos += 20;
+            heightBox += 20;
+            lineHeight -= 20;
 
+        }
 
     }
-
 });

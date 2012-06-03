@@ -7,7 +7,7 @@
 config :nodegraph, :title => 'Engine Yard Demo: Environment Node Graph' 
 
 # CONFIGURE FRAMEWORKS
-config :all, :required => [:sproutcore, :cloudos], :minify => true, :html5_history => true
+config :all, :required => [:sproutcore, :cloudos, :external], :minify => true, :html5_history => true
 
 # CONFIGURE THEMES
  config :all, :theme => 'tcb_theme'
