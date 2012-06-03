@@ -6,3 +6,11 @@ Nodegraph.utillitiesController = SC.ArrayController.create({
 
 });
 
+
+
+Nodegraph.applicationsController = SC.ArrayController.create({
+
+});
+
+
+

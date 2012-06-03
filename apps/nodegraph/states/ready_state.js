@@ -8,6 +8,9 @@ Nodegraph.ReadyState = SC.State.extend({
       var query = SC.Query.local(Nodegraph.Utilities);
       Nodegraph.utillitiesController.set('content',Nodegraph.store.find(query));
 
+      var appQuery = SC.Query.local(Nodegraph.Applications);
+      Nodegraph.applicationsController.set('content',Nodegraph.store.find(appQuery));
+
   },
 
 	fadeIn: function() {

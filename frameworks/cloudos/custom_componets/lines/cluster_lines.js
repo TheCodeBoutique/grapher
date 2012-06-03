@@ -131,7 +131,20 @@ COS.ClusterLines = SC.View.extend({
         //angle ones
         //when using rotate make sure you center is stating point of the line you want to rotate
         paper.rect(520, 340, 10, 90).attr("fill", "#666666").rotate(45,520,340);
-        paper.circle(460, 410, 20).attr("fill", "#b4ffb4");
+        paper.circle(460, 410, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
+            /**
+             * change the num value to select different applications
+             * @type {*}
+             */
+            var content = Nodegraph.applicationsController.content.objectAt(0);
+            Nodegraph.utillitieSelectionController.set('content', content);
+            var tip = SC.$('#tip');
+            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+            tip.html(content.get('name'));
+        }).mouseout(function(e) {
+                var tip = SC.$('#tip');
+                tip.css('visibility', 'hidden');
+            });
 
 
     }
