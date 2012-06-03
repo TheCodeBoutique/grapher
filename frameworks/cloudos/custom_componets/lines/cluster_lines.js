@@ -22,58 +22,95 @@ COS.ClusterLines = SC.View.extend({
      */
     didCreateLayer: function() {
         var paper = Raphael(0, 0, window.screen.width, window.screen.height); //build canvas
-        var line = paper.rect(540, 220, 10, 90).attr("fill", "#666666");
         this.set('paper', paper);
 
 
         //rect is 15 less the line
         var leftBox = 525;
-        var heightBox = 200;
+        var heightBox = 240;
+        var heightBoxBottom = 380;
         var lineLeft = 540;
-        var lineYpos = 220;
-        var lineHeight = 90;
+        var lineYpos = 260;
+        var lineYposbottom = 330;
+        var lineHeight = 50;
         var i = 0;
         var b = 0;
         //go up
+        
         for (i; i < 5; i++) {
-            paper.rect(lineLeft, lineYpos, 10, lineHeight).attr("fill", "#666666");
-            paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+            paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
+            paper.rect(lineLeft, lineYposbottom, 5, lineHeight).attr("fill", "#666666");
+            paper.rect(leftBox, heightBoxBottom, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
                 tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
                 tip.html(content.get('name'));
-            }).mouseout(function(e) {
-                    var tip = SC.$('#tip');
-                    tip.css('visibility', 'hidden');
-                });
+            })
+            
+            .mouseout(function(e) {
+              var tip = SC.$('#tip');
+              tip.css('visibility', 'hidden');
+            });
+            
+            paper.rect(leftBox, heightBox, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+                var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
+                var tip = SC.$('#tip');
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            })
+            
+            .mouseout(function(e) {
+              var tip = SC.$('#tip');
+              tip.css('visibility', 'hidden');
+            });
 
             leftBox += 50;
             lineLeft += 50;
             lineYpos -= 20;
             heightBox -= 20;
+            heightBoxBottom += 20;
             lineHeight += 20;
 
         }
+        
 
         //go down
         for (i; i < 11; i++) {
-            paper.rect(lineLeft, lineYpos, 10, lineHeight).attr("fill", "#666666");
-            paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+            paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
+            paper.rect(lineLeft, lineYposbottom, 5, lineHeight).attr("fill", "#666666");
+            paper.rect(leftBox, heightBoxBottom, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
                 tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
                 tip.html(content.get('name'));
-            }).mouseout(function(e) {
-                    var tip = SC.$('#tip');
-                    tip.css('visibility', 'hidden');
-                });
+            })
+            
+            .mouseout(function(e) {
+              var tip = SC.$('#tip');
+              tip.css('visibility', 'hidden');
+            });
+            
+            paper.rect(leftBox, heightBox, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+                var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
+                var tip = SC.$('#tip');
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            })
+            
+            .mouseout(function(e) {
+              var tip = SC.$('#tip');
+              tip.css('visibility', 'hidden');
+            });
 
             leftBox += 50;
             lineLeft += 50;
             lineYpos += 20;
             heightBox += 20;
+            heightBoxBottom -= 20;
             lineHeight -= 20;
 
         }
