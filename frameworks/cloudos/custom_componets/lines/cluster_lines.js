@@ -33,6 +33,7 @@ COS.ClusterLines = SC.View.extend({
         var lineYpos = 220;
         var lineHeight = 90;
         var i = 0;
+        var b = 0;
         //go up
         for (i; i < 5; i++) {
             paper.rect(lineLeft, lineYpos, 10, lineHeight).attr("fill", "#666666");
@@ -74,6 +75,56 @@ COS.ClusterLines = SC.View.extend({
             lineYpos += 20;
             heightBox += 20;
             lineHeight -= 20;
+
+        }
+
+        //upside down up
+        var bottomLeftBox = 525;
+        var bottomHeightBox = 405;
+
+        var bottomLineLeft = 540;
+        var bottomLineYpos = 345;
+        var bottomLineHeight = 90;
+
+        for (i; i < 16; i++) {
+            paper.rect(bottomLineLeft, bottomLineYpos, 10, bottomLineHeight).attr("fill", "#666666");
+            paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+                var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
+                var tip = SC.$('#tip');
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            }).mouseout(function(e) {
+                    var tip = SC.$('#tip');
+                    tip.css('visibility', 'hidden');
+                });
+
+            bottomLineLeft += 50;
+            bottomLineHeight += 20;
+
+            bottomLeftBox += 50;
+            bottomHeightBox += 20;
+
+        }
+
+        for (i; i < 22; i++) {
+            paper.rect(bottomLineLeft, bottomLineYpos, 10, bottomLineHeight).attr("fill", "#666666");
+            paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+                var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
+                var tip = SC.$('#tip');
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            }).mouseout(function(e) {
+                    var tip = SC.$('#tip');
+                    tip.css('visibility', 'hidden');
+                });
+
+            bottomLineLeft += 50;
+            bottomLineHeight -= 20;
+
+            bottomLeftBox += 50;
+            bottomHeightBox -= 20;
 
         }
 
