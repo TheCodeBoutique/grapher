@@ -128,5 +128,10 @@ COS.ClusterLines = SC.View.extend({
 
         }
 
+        //angle ones
+        //when using rotate make sure you center is stating point of the line you want to rotate
+        paper.rect(520, 340, 10, 90).attr("fill", "#666666").rotate(45,520,340);
+
+
     }
 });
