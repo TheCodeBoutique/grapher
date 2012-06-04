@@ -22,7 +22,7 @@ COS.ClusterLines = SC.View.extend({
      */
     didCreateLayer: function() {
         var paper = Raphael(0, 0, window.screen.width, window.screen.height); //build canvas
-        var line = paper.rect(540, 220, 10, 90).attr("fill", "#666666");
+        var line = paper.rect(540, 220, 5, 90).attr("fill", "#666666");
         this.set('paper', paper);
 
 
@@ -36,7 +36,7 @@ COS.ClusterLines = SC.View.extend({
         var b = 0;
         //go up
         for (i; i < 5; i++) {
-            paper.rect(lineLeft, lineYpos, 10, lineHeight).attr("fill", "#666666");
+            paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
             paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
@@ -58,7 +58,7 @@ COS.ClusterLines = SC.View.extend({
 
         //go down
         for (i; i < 11; i++) {
-            paper.rect(lineLeft, lineYpos, 10, lineHeight).attr("fill", "#666666");
+            paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
             paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
@@ -87,7 +87,7 @@ COS.ClusterLines = SC.View.extend({
         var bottomLineHeight = 90;
 
         for (i; i < 16; i++) {
-            paper.rect(bottomLineLeft, bottomLineYpos, 10, bottomLineHeight).attr("fill", "#666666");
+            paper.rect(bottomLineLeft, bottomLineYpos, 5, bottomLineHeight).attr("fill", "#666666");
             paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
@@ -108,7 +108,7 @@ COS.ClusterLines = SC.View.extend({
         }
 
         for (i; i < 22; i++) {
-            paper.rect(bottomLineLeft, bottomLineYpos, 10, bottomLineHeight).attr("fill", "#666666");
+            paper.rect(bottomLineLeft, bottomLineYpos, 5, bottomLineHeight).attr("fill", "#666666");
             paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
@@ -130,13 +130,47 @@ COS.ClusterLines = SC.View.extend({
 
         //angle ones
         //when using rotate make sure you center is stating point of the line you want to rotate
-        paper.rect(520, 340, 10, 90).attr("fill", "#666666").rotate(45,520,340);
-        paper.circle(460, 410, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
-            /**
-             * change the num value to select different applications
-             * @type {*}
-             */
+        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(15, 525, 340);
+        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(45, 525, 340);
+        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(65, 525, 340);
+        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(85, 525, 340);
+
+
+        paper.circle(405, 465, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
             var content = Nodegraph.applicationsController.content.objectAt(0);
+            Nodegraph.utillitieSelectionController.set('content', content);
+            var tip = SC.$('#tip');
+            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+            tip.html(content.get('name'));
+        }).mouseout(function(e) {
+                var tip = SC.$('#tip');
+                tip.css('visibility', 'hidden');
+            });
+
+        paper.circle(365, 415, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
+            var content = Nodegraph.applicationsController.content.objectAt(1);
+            Nodegraph.utillitieSelectionController.set('content', content);
+            var tip = SC.$('#tip');
+            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+            tip.html(content.get('name'));
+        }).mouseout(function(e) {
+                var tip = SC.$('#tip');
+                tip.css('visibility', 'hidden');
+            });
+
+        paper.circle(345, 360, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
+            var content = Nodegraph.applicationsController.content.objectAt(2);
+            Nodegraph.utillitieSelectionController.set('content', content);
+            var tip = SC.$('#tip');
+            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+            tip.html(content.get('name'));
+        }).mouseout(function(e) {
+                var tip = SC.$('#tip');
+                tip.css('visibility', 'hidden');
+            });
+
+        paper.circle(480, 515, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
+            var content = Nodegraph.applicationsController.content.objectAt(3);
             Nodegraph.utillitieSelectionController.set('content', content);
             var tip = SC.$('#tip');
             tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
