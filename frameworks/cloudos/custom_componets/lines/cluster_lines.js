@@ -135,55 +135,76 @@ COS.ClusterLines = SC.View.extend({
 
         //angle ones
         //when using rotate make sure you center is stating point of the line you want to rotate
-        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(15, 525, 340);
-        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(45, 525, 340);
-        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(65, 525, 340);
-        paper.rect(525, 340, 5, 180).attr("fill", "#666666").rotate(85, 525, 340);
+        var startingXpos = 525;
+        var startingYpos = 340;
+        var startingAngle = 15;
+        var circleRadius = 20;
+        var startingCircleXpos = 480;
+        var startingCircleYpos = 515;
+        for (var c = 0; c < 4; c++) {
+            paper.rect(startingXpos, startingYpos, 5, 180).attr("fill", "#CCCCCC").rotate(startingAngle, startingXpos, startingYpos);
+            startingAngle += 20;
 
-
-        paper.circle(405, 465, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
-            var content = Nodegraph.applicationsController.content.objectAt(0);
-            Nodegraph.utillitieSelectionController.set('content', content);
-            var tip = SC.$('#tip');
-            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-            tip.html(content.get('name'));
-        }).mouseout(function(e) {
+            paper.circle(startingCircleXpos, startingCircleYpos, circleRadius).data("i", c).attr("fill", "#b4ffb4").mousemove(function(e) {
+                var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css('visibility', 'hidden');
-            });
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            }).mouseout(function(e) {
+                    var tip = SC.$('#tip');
+                    tip.css('visibility', 'hidden');
+                });
 
-        paper.circle(365, 415, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
-            var content = Nodegraph.applicationsController.content.objectAt(1);
-            Nodegraph.utillitieSelectionController.set('content', content);
-            var tip = SC.$('#tip');
-            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-            tip.html(content.get('name'));
-        }).mouseout(function(e) {
-                var tip = SC.$('#tip');
-                tip.css('visibility', 'hidden');
-            });
+            startingCircleXpos -= 45;
 
-        paper.circle(345, 360, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
-            var content = Nodegraph.applicationsController.content.objectAt(2);
-            Nodegraph.utillitieSelectionController.set('content', content);
-            var tip = SC.$('#tip');
-            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-            tip.html(content.get('name'));
-        }).mouseout(function(e) {
-                var tip = SC.$('#tip');
-                tip.css('visibility', 'hidden');
-            });
+            startingCircleYpos -= 40;
+        }
 
-        paper.circle(480, 515, 20).attr("fill", "#b4ffb4").mousemove(function(e) {
-            var content = Nodegraph.applicationsController.content.objectAt(3);
-            Nodegraph.utillitieSelectionController.set('content', content);
-            var tip = SC.$('#tip');
-            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-            tip.html(content.get('name'));
-        }).mouseout(function(e) {
-                var tip = SC.$('#tip');
-                tip.css('visibility', 'hidden');
-            });
+
+//        paper.circle(405, 465, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
+//            var content = Nodegraph.applicationsController.content.objectAt(0);
+//            Nodegraph.utillitieSelectionController.set('content', content);
+//            var tip = SC.$('#tip');
+//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+//            tip.html(content.get('name'));
+//        }).mouseout(function(e) {
+//                var tip = SC.$('#tip');
+//                tip.css('visibility', 'hidden');
+//            });
+//
+//        paper.circle(365, 415, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
+//            var content = Nodegraph.applicationsController.content.objectAt(1);
+//            Nodegraph.utillitieSelectionController.set('content', content);
+//            var tip = SC.$('#tip');
+//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+//            tip.html(content.get('name'));
+//        }).mouseout(function(e) {
+//                var tip = SC.$('#tip');
+//                tip.css('visibility', 'hidden');
+//            });
+//
+//        paper.circle(345, 360, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
+//            var content = Nodegraph.applicationsController.content.objectAt(2);
+//            Nodegraph.utillitieSelectionController.set('content', content);
+//            var tip = SC.$('#tip');
+//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+//            tip.html(content.get('name'));
+//        }).mouseout(function(e) {
+//                var tip = SC.$('#tip');
+//                tip.css('visibility', 'hidden');
+//            });
+//
+//        paper.circle(480, 515, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
+//            var content = Nodegraph.applicationsController.content.objectAt(3);
+//            Nodegraph.utillitieSelectionController.set('content', content);
+//            var tip = SC.$('#tip');
+//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+//            tip.html(content.get('name'));
+//        }).mouseout(function(e) {
+//                var tip = SC.$('#tip');
+//                tip.css('visibility', 'hidden');
+//            });
 
 
     }
