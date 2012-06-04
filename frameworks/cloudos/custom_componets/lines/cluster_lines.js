@@ -22,23 +22,22 @@ COS.ClusterLines = SC.View.extend({
      */
     didCreateLayer: function() {
         var paper = Raphael(0, 0, window.screen.width, window.screen.height); //build canvas
-        var line = paper.rect(540, 220, 5, 90).attr("fill", "#666666");
         this.set('paper', paper);
 
 
         //rect is 15 less the line
-        var leftBox = 525;
-        var heightBox = 200;
-        var lineLeft = 540;
-        var lineYpos = 220;
-        var lineHeight = 90;
+        var boxLeftPosition = 570;
+        var boxYPosition = 280;
+        var lineLeftPostion = 585;
+        var lineYPosition = 300;
+        var lineHeight = 50;
         var i = 0;
         var b = 0;
-        var square = null;
-        //go up
+
+        // This is the logic that makes the Top Nodes go Up //
         for (i; i < 5; i++) {
-            paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
-            paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+            paper.rect(lineLeftPostion, lineYPosition, 5, lineHeight).attr("fill", "#666666");
+            paper.rect(boxLeftPosition, boxYPosition, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
@@ -49,20 +48,18 @@ COS.ClusterLines = SC.View.extend({
                     tip.css('visibility', 'hidden');
                 });
 
-            leftBox += 50;
-            lineLeft += 50;
-            lineYpos -= 20;
-            heightBox -= 20;
-            lineHeight += 20;
+            boxLeftPosition += 50;
+            lineLeftPostion += 50;
+            lineYPosition -= 15;
+            boxYPosition -= 15;
+            lineHeight += 15;
 
         }
 
-        //go down
+        // This is the logic that makes the Top Nodes go Down //
         for (i; i < 11; i++) {
-            paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
-            square = (i === 9 ) ? paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#fbff67") : paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f");
-
-            square.mousemove(function(e) {
+            paper.rect(lineLeftPostion, lineYPosition, 5, lineHeight).attr("fill", "#666666");
+            paper.rect(boxLeftPosition, boxYPosition, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
@@ -73,25 +70,24 @@ COS.ClusterLines = SC.View.extend({
                     tip.css('visibility', 'hidden');
                 });
 
-            leftBox += 50;
-            lineLeft += 50;
-            lineYpos += 20;
-            heightBox += 20;
-            lineHeight -= 20;
+            boxLeftPosition += 50;
+            lineLeftPostion += 50;
+            lineYPosition += 15;
+            boxYPosition += 15;
+            lineHeight -= 15;
 
         }
 
-        //upside down up
-        var bottomLeftBox = 525;
-        var bottomHeightBox = 405;
-
-        var bottomLineLeft = 540;
-        var bottomLineYpos = 345;
-        var bottomLineHeight = 90;
+        // This is the logic that makes the Bottom Nodes go Up //
+        var boxLowerLeftPosition = 570;
+        var boxLowerYPosition = 410;
+        var bottomlineLeftPostion = 585;
+        var bottomLineYPosition = 375;
+        var bottomLineHeight = 50;
 
         for (i; i < 16; i++) {
-            paper.rect(bottomLineLeft, bottomLineYpos, 5, bottomLineHeight).attr("fill", "#666666");
-            paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+            paper.rect(bottomlineLeftPostion, bottomLineYPosition, 5, bottomLineHeight).attr("fill", "#666666");
+            paper.rect(boxLowerLeftPosition, boxLowerYPosition, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
@@ -102,19 +98,17 @@ COS.ClusterLines = SC.View.extend({
                     tip.css('visibility', 'hidden');
                 });
 
-            bottomLineLeft += 50;
-            bottomLineHeight += 20;
-
-            bottomLeftBox += 50;
-            bottomHeightBox += 20;
+            bottomlineLeftPostion += 50;
+            bottomLineHeight += 15;
+            boxLowerLeftPosition += 50;
+            boxLowerYPosition += 15;
 
         }
 
+        // This is the logic that makes the Bottom Nodes go Down //
         for (i; i < 22; i++) {
-            paper.rect(bottomLineLeft, bottomLineYpos, 5, bottomLineHeight).attr("fill", "#666666");
-
-            square = (i === 18 || i === 20) ? paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#ff5555") : paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f");
-            square.mousemove(function(e) {
+            paper.rect(bottomlineLeftPostion, bottomLineYPosition, 5, bottomLineHeight).attr("fill", "#666666");
+            paper.rect(boxLowerLeftPosition, boxLowerYPosition, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
@@ -125,24 +119,25 @@ COS.ClusterLines = SC.View.extend({
                     tip.css('visibility', 'hidden');
                 });
 
-            bottomLineLeft += 50;
-            bottomLineHeight -= 20;
-
-            bottomLeftBox += 50;
-            bottomHeightBox -= 20;
+            bottomlineLeftPostion += 50;
+            bottomLineHeight -= 15;
+            boxLowerLeftPosition += 50;
+            boxLowerYPosition -= 15;
 
         }
 
-        //angle ones
-        //when using rotate make sure you center is stating point of the line you want to rotate
-        var startingXpos = 525;
-        var startingYpos = 340;
+
+        // This is the logic that makes the Bottom Left Application Nodes //
+        var circleLineLeft = 560;
+        var circleYPosition = 380;
         var startingAngle = 15;
         var circleRadius = 20;
-        var startingCircleXpos = 480;
+        var startingCircleXpos = 525;
         var startingCircleYpos = 515;
+        var circleLinesBottomLeftLength = 140
+        
         for (var c = 0; c < 4; c++) {
-            paper.rect(startingXpos, startingYpos, 5, 180).attr("fill", "#CCCCCC").rotate(startingAngle, startingXpos, startingYpos);
+            paper.rect(circleLineLeft, circleYPosition, 5, circleLinesBottomLeftLength).attr("fill", "#CCCCCC").rotate(startingAngle, circleLineLeft, circleYPosition);
             startingAngle += 20;
 
             paper.circle(startingCircleXpos, startingCircleYpos, circleRadius).data("i", c).attr("fill", "#b4ffb4").mousemove(function(e) {
@@ -151,61 +146,49 @@ COS.ClusterLines = SC.View.extend({
                 var tip = SC.$('#tip');
                 tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
                 tip.html(content.get('name'));
-            }).mouseout(function(e) {
-                    var tip = SC.$('#tip');
-                    tip.css('visibility', 'hidden');
-                });
+            })
+            
+            .mouseout(function(e) {
+              var tip = SC.$('#tip');
+              tip.css('visibility', 'hidden');
+            });
 
-            startingCircleXpos -= 45;
-
+            startingCircleXpos -= 15;
             startingCircleYpos -= 40;
+            circleLinesBottomLeftLength -= 20;
         }
+        
+        // This is the logic that makes the Top Left Application Nodes //
+        var circleLineLeft = 565;
+        var circleYPosition = 30;
+        var startingAngle = 160;
+        var circleRadius = 20;
+        var startingCircleXpos = 480;
+        var startingCircleYpos = 345;
+        var circleLinesBottomLeftLength = 140;
+        
+        for (var c = c; c < 5; c++) {
+            paper.rect(circleLineLeft, circleYPosition, 5, circleLinesBottomLeftLength).attr("fill", "#CCCCCC").rotate(startingAngle, circleLineLeft, circleYPosition);
+            startingAngle += 20;
 
+            paper.circle(startingCircleXpos, startingCircleYpos, circleRadius).data("i", c).attr("fill", "#b4ffb4").mousemove(function(e) {
+                var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
+                Nodegraph.utillitieSelectionController.set('content', content);
+                var tip = SC.$('#tip');
+                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.html(content.get('name'));
+            })
+            
+            .mouseout(function(e) {
+              var tip = SC.$('#tip');
+              tip.css('visibility', 'hidden');
+            });
 
-//        paper.circle(405, 465, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
-//            var content = Nodegraph.applicationsController.content.objectAt(0);
-//            Nodegraph.utillitieSelectionController.set('content', content);
-//            var tip = SC.$('#tip');
-//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-//            tip.html(content.get('name'));
-//        }).mouseout(function(e) {
-//                var tip = SC.$('#tip');
-//                tip.css('visibility', 'hidden');
-//            });
-//
-//        paper.circle(365, 415, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
-//            var content = Nodegraph.applicationsController.content.objectAt(1);
-//            Nodegraph.utillitieSelectionController.set('content', content);
-//            var tip = SC.$('#tip');
-//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-//            tip.html(content.get('name'));
-//        }).mouseout(function(e) {
-//                var tip = SC.$('#tip');
-//                tip.css('visibility', 'hidden');
-//            });
-//
-//        paper.circle(345, 360, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
-//            var content = Nodegraph.applicationsController.content.objectAt(2);
-//            Nodegraph.utillitieSelectionController.set('content', content);
-//            var tip = SC.$('#tip');
-//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-//            tip.html(content.get('name'));
-//        }).mouseout(function(e) {
-//                var tip = SC.$('#tip');
-//                tip.css('visibility', 'hidden');
-//            });
-//
-//        paper.circle(480, 515, circleRadius).attr("fill", "#b4ffb4").mousemove(function(e) {
-//            var content = Nodegraph.applicationsController.content.objectAt(3);
-//            Nodegraph.utillitieSelectionController.set('content', content);
-//            var tip = SC.$('#tip');
-//            tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
-//            tip.html(content.get('name'));
-//        }).mouseout(function(e) {
-//                var tip = SC.$('#tip');
-//                tip.css('visibility', 'hidden');
-//            });
-
+            startingCircleXpos += 15;
+            startingCircleYpos -= 40;
+            circleLinesBottomLeftLength += 25;
+            circleLineLeft +=10;
+        }
 
     }
 });
