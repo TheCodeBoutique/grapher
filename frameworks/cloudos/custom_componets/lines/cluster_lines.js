@@ -34,6 +34,7 @@ COS.ClusterLines = SC.View.extend({
         var lineHeight = 90;
         var i = 0;
         var b = 0;
+        var square = null;
         //go up
         for (i; i < 5; i++) {
             paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
@@ -59,7 +60,9 @@ COS.ClusterLines = SC.View.extend({
         //go down
         for (i; i < 11; i++) {
             paper.rect(lineLeft, lineYpos, 5, lineHeight).attr("fill", "#666666");
-            paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+            square = (i === 9 ) ? paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#fbff67") : paper.rect(leftBox, heightBox, 40, 40).data("i", i).attr("fill", "#6fee6f");
+
+            square.mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
@@ -109,7 +112,9 @@ COS.ClusterLines = SC.View.extend({
 
         for (i; i < 22; i++) {
             paper.rect(bottomLineLeft, bottomLineYpos, 5, bottomLineHeight).attr("fill", "#666666");
-            paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
+
+            square = (i === 18 || i === 20) ? paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#ff5555") : paper.rect(bottomLeftBox, bottomHeightBox, 40, 40).data("i", i).attr("fill", "#6fee6f");
+            square.mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
