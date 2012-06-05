@@ -192,6 +192,37 @@ COS.ClusterView = SC.View.extend({
         }
 
         this._bottomRightSection(paper, c);
+        this._topRightSection(paper, c);
+
+    },
+
+    _topRightSection: function(paper, c) {
+        // This is the logic that makes the Bottom Left Application Nodes //
+        var circleLineLeft = 1110;
+        var circleYPosition = 390;
+        var startingAngle = 185;
+        var circleRadius = 20;
+        var startingCircleXpos = 1125;
+        var startingCircleYpos = 545;
+        var circleLinesBottomLeftLength = 140;
+        for (c = 0; c < 4; c++) {
+            var bigCircles = paper.set();
+            bigCircles.push(
+                paper.rect(1110, 350, 5, 140).attr("fill", "#CCCCCC"),
+                paper.circle(1112, 495, 20).data("i", c).attr({"fill": "#b4ffb4", cursor: "pointer"}).mousemove(function(e) {
+                    var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
+                    Nodegraph.utillitieSelectionController.set('content', content);
+                    var tip = SC.$('#tip');
+                    tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                    tip.html(content.get('name'));
+                }).mouseout(function(e) {
+                        var tip = SC.$('#tip');
+                        tip.css('visibility', 'hidden');
+                    })
+            )
+            bigCircles.rotate(startingAngle, 1110, 350);
+            startingAngle += 25;
+        }
 
     },
 
