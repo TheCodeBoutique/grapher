@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©1256-2011 Strobe Inc. and contributors.
-//            Portions ©1258-2011 Apple Inc. All rights reserved.
+// Copyright: ©1056-2011 Strobe Inc. and contributors.
+//            Portions ©1058-2011 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
@@ -41,7 +41,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -63,7 +63,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -91,7 +91,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -112,7 +112,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -125,102 +125,99 @@ COS.ClusterView = SC.View.extend({
             boxLowerYPosition -= 15;
 
         }
-
-
-        // This is the logic that makes the Bottom Left Application Nodes //
-        var circleLineLeft = 570;
-        var circleYPosition = 380;
-        var startingAngle = 15;
-        var circleRadius = 20;
-        var startingCircleXpos = 525;
-        var startingCircleYpos = 520;
-        var circleLinesBottomLeftLength = 140
         var c = 0;
-
-        for (c; c < 4; c++) {
-            paper.rect(circleLineLeft, circleYPosition, 5, circleLinesBottomLeftLength).attr("fill", "#CCCCCC").rotate(startingAngle, circleLineLeft, circleYPosition);
-            startingAngle += 20;
-
-            paper.circle(startingCircleXpos, startingCircleYpos, circleRadius).data("i", c).attr("fill", "#b4ffb4").mousemove(function(e) {
-                var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
-                Nodegraph.utillitieSelectionController.set('content', content);
-                var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
-                tip.html(content.get('name'));
-            })
-
-                .mouseout(function(e) {
-                    var tip = SC.$('#tip');
-                    tip.css('visibility', 'hidden');
-                });
-
-            startingCircleXpos -= 15;
-            startingCircleYpos -= 40;
-            circleLinesBottomLeftLength -= 20;
-        }
-
-        // This is the logic that makes the Top Left Application Nodes //
-        var circleLineTopLeft = 570;
-        var circleYTopPosition = 320;
-        var startingTopAngle = 160;
-        var circleRadius = 20;
-        var startingCircleXpos = 520;
-        var startingCircleYpos = 220;
-        var circleLinesBottomLeftLength = 140;
-
-        for (c; c < 8; c++) {
-            paper.rect(circleLineTopLeft, circleYTopPosition, 5, circleLinesBottomLeftLength).attr("fill", "#CCCCCC").rotate(startingTopAngle, circleLineTopLeft, circleYTopPosition);
-            startingTopAngle += 20;
-
-            paper.circle(startingCircleXpos, startingCircleYpos, circleRadius).data("i", c).attr("fill", "#b4ffb4").mousemove(function(e) {
-                var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
-                Nodegraph.utillitieSelectionController.set('content', content);
-                var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
-                tip.html(content.get('name'));
-            })
-
-                .mouseout(function(e) {
-                    var tip = SC.$('#tip');
-                    tip.css('visibility', 'hidden');
-                });
-
-            startingCircleXpos -= 15;
-            startingCircleYpos += 43;
-            circleLinesBottomLeftLength -= 20;
-            startingTopAngle -= 41;
-        }
-
         this._bottomRightSection(paper, c);
         this._topRightSection(paper, c);
+        this._topLeftSection(paper, c);
+        this._bottomLeftSection(paper, c);
 
     },
 
-    _topRightSection: function(paper, c) {
+    _topLeftSection: function(paper, c) {
         // This is the logic that makes the Bottom Left Application Nodes //
-        var circleLineLeft = 1110;
-        var circleYPosition = 390;
-        var startingAngle = 185;
+        var circleLineLeft = 570;
+        var circleYPosition = 410;
+        var startingAngle = 175;
         var circleRadius = 20;
-        var startingCircleXpos = 1125;
+        var startingCircleXpos = 1105;
         var startingCircleYpos = 545;
         var circleLinesBottomLeftLength = 140;
         for (c = 0; c < 4; c++) {
             var bigCircles = paper.set();
             bigCircles.push(
-                paper.rect(1110, 350, 5, 140).attr("fill", "#CCCCCC"),
-                paper.circle(1112, 495, 20).data("i", c).attr({"fill": "#b4ffb4", cursor: "pointer"}).mousemove(function(e) {
+                paper.rect(570, 350, 5, 140).attr("fill", "#CCCCCC"),
+                paper.circle(570, 495, 20).data("i", c).attr({"fill": "#b4ffb4", cursor: "pointer"}).mousemove(function(e) {
                     var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
                     Nodegraph.utillitieSelectionController.set('content', content);
                     var tip = SC.$('#tip');
-                    tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                    tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
                     tip.html(content.get('name'));
                 }).mouseout(function(e) {
                         var tip = SC.$('#tip');
                         tip.css('visibility', 'hidden');
                     })
             )
-            bigCircles.rotate(startingAngle, 1110, 350);
+            bigCircles.rotate(startingAngle, 570, 350);
+            startingAngle -= 25;
+        }
+
+    },
+
+  _bottomLeftSection: function(paper, c) {
+        // This is the logic that makes the Bottom Left Application Nodes //
+        var circleLineLeft = 570;
+        var circleYPosition = 410;
+        var startingAngle = 5;
+        var circleRadius = 20;
+        var startingCircleXpos = 1105;
+        var startingCircleYpos = 545;
+        var circleLinesBottomLeftLength = 140;
+        for (c = 4; c < 8; c++) {
+            var bigCircles = paper.set();
+            bigCircles.push(
+                paper.rect(565, 385, 5, 140).attr("fill", "#CCCCCC"),
+                paper.circle(565, 530, 20).data("i", c).attr({"fill": "#b4ffb4", cursor: "pointer"}).mousemove(function(e) {
+                    var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
+                    Nodegraph.utillitieSelectionController.set('content', content);
+                    var tip = SC.$('#tip');
+                    tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
+                    tip.html(content.get('name'));
+                }).mouseout(function(e) {
+                        var tip = SC.$('#tip');
+                        tip.css('visibility', 'hidden');
+                    })
+            )
+            bigCircles.rotate(startingAngle, 565, 385);
+            startingAngle += 25;
+        }
+
+    },
+
+    _topRightSection: function(paper, c) {
+        // This is the logic that makes the Bottom Left Application Nodes //
+        var circleLineLeft = 1105;
+        var circleYPosition = 390;
+        var startingAngle = 185;
+        var circleRadius = 20;
+        var startingCircleXpos = 1105;
+        var startingCircleYpos = 545;
+        var circleLinesBottomLeftLength = 140;
+        for (c = 8; c < 12; c++) {
+            var bigCircles = paper.set();
+            bigCircles.push(
+                paper.rect(1105, 350, 5, 140).attr("fill", "#CCCCCC"),
+                paper.circle(1112, 495, 20).data("i", c).attr({"fill": "#b4ffb4", cursor: "pointer"}).mousemove(function(e) {
+                    var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
+                    Nodegraph.utillitieSelectionController.set('content', content);
+                    var tip = SC.$('#tip');
+                    tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
+                    tip.html(content.get('name'));
+                }).mouseout(function(e) {
+                        var tip = SC.$('#tip');
+                        tip.css('visibility', 'hidden');
+                    })
+            )
+            bigCircles.rotate(startingAngle, 1105, 350);
             startingAngle += 25;
         }
 
@@ -229,22 +226,22 @@ COS.ClusterView = SC.View.extend({
     _bottomRightSection: function(paper, c) {
 
         // This is the logic that makes the Bottom Left Application Nodes //
-        var circleLineLeft = 1110;
+        var circleLineLeft = 1105;
         var circleYPosition = 390;
         var startingAngle = 295;
         var circleRadius = 20;
-        var startingCircleXpos = 1125;
+        var startingCircleXpos = 1105;
         var startingCircleYpos = 545;
         var circleLinesBottomLeftLength = 140
-        for (c = 0; c < 4; c++) {
+        for (c = 12; c < 16; c++) {
             var bigCircles = paper.set();
             bigCircles.push(
-                paper.rect(1110, 390, 5, 140).attr("fill", "#CCCCCC"),
+                paper.rect(1105, 390, 5, 140).attr("fill", "#CCCCCC"),
                 paper.circle(1115, 545, 20).data("i", c).attr({"fill": "#b4ffb4", cursor: "pointer"}).mousemove(function(e) {
                     var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
                     Nodegraph.utillitieSelectionController.set('content', content);
                     var tip = SC.$('#tip');
-                    tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                    tip.css("left", e.clientX - 320).css("top", e.clientY - 105).css('visibility', 'visible');
                     tip.html(content.get('name'));
                 }).mouseout(function(e) {
                         var tip = SC.$('#tip');
