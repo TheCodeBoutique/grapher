@@ -1,7 +1,7 @@
 // ==========================================================================
 // Project:   SproutCore - JavaScript Application Framework
-// Copyright: ©2006-2011 Strobe Inc. and contributors.
-//            Portions ©2008-2011 Apple Inc. All rights reserved.
+// Copyright: ©1256-2011 Strobe Inc. and contributors.
+//            Portions ©1258-2011 Apple Inc. All rights reserved.
 // License:   Licensed under MIT license (see license.js)
 // ==========================================================================
 
@@ -41,7 +41,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -63,7 +63,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -91,7 +91,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -112,7 +112,7 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
                 tip.html(content.get('name'));
             }).mouseout(function(e) {
                     var tip = SC.$('#tip');
@@ -135,8 +135,9 @@ COS.ClusterView = SC.View.extend({
         var startingCircleXpos = 525;
         var startingCircleYpos = 520;
         var circleLinesBottomLeftLength = 140
-        
-        for (var c = 0; c < 4; c++) {
+        var c = 0;
+
+        for (c; c < 4; c++) {
             paper.rect(circleLineLeft, circleYPosition, 5, circleLinesBottomLeftLength).attr("fill", "#CCCCCC").rotate(startingAngle, circleLineLeft, circleYPosition);
             startingAngle += 20;
 
@@ -144,30 +145,30 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
                 tip.html(content.get('name'));
             })
-            
-            .mouseout(function(e) {
-              var tip = SC.$('#tip');
-              tip.css('visibility', 'hidden');
-            });
+
+                .mouseout(function(e) {
+                    var tip = SC.$('#tip');
+                    tip.css('visibility', 'hidden');
+                });
 
             startingCircleXpos -= 15;
             startingCircleYpos -= 40;
             circleLinesBottomLeftLength -= 20;
         }
-        
+
         // This is the logic that makes the Top Left Application Nodes //
         var circleLineTopLeft = 570;
-        var circleYTopPosition = 350;
+        var circleYTopPosition = 320;
         var startingTopAngle = 160;
         var circleRadius = 20;
         var startingCircleXpos = 520;
         var startingCircleYpos = 220;
         var circleLinesBottomLeftLength = 140;
-        
-        for (var c = c; c < 8; c++) {
+
+        for (c; c < 8; c++) {
             paper.rect(circleLineTopLeft, circleYTopPosition, 5, circleLinesBottomLeftLength).attr("fill", "#CCCCCC").rotate(startingTopAngle, circleLineTopLeft, circleYTopPosition);
             startingTopAngle += 20;
 
@@ -175,19 +176,52 @@ COS.ClusterView = SC.View.extend({
                 var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
                 var tip = SC.$('#tip');
-                tip.css("left", e.clientX - 250).css("top", e.clientY).css('visibility', 'visible');
+                tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
                 tip.html(content.get('name'));
             })
-            
-            .mouseout(function(e) {
-              var tip = SC.$('#tip');
-              tip.css('visibility', 'hidden');
-            });
+
+                .mouseout(function(e) {
+                    var tip = SC.$('#tip');
+                    tip.css('visibility', 'hidden');
+                });
 
             startingCircleXpos -= 15;
             startingCircleYpos += 43;
             circleLinesBottomLeftLength -= 20;
             startingTopAngle -= 41;
+        }
+
+        this._bottomRightSection(paper, c);
+
+    },
+
+    _bottomRightSection: function(paper, c) {
+
+        // This is the logic that makes the Bottom Left Application Nodes //
+        var circleLineLeft = 1110;
+        var circleYPosition = 390;
+        var startingAngle = 295;
+        var circleRadius = 20;
+        var startingCircleXpos = 1125;
+        var startingCircleYpos = 545;
+        var circleLinesBottomLeftLength = 140
+        for (c = 0; c < 4; c++) {
+            var bigCircles = paper.set();
+            bigCircles.push(
+                paper.rect(1110, 390, 5, 140).attr("fill", "#CCCCCC"),
+                paper.circle(1115, 545, 20).data("i", c).attr({"fill": "#b4ffb4", cursor: "pointer"}).mousemove(function(e) {
+                    var content = Nodegraph.applicationsController.content.objectAt(this.data("i"));
+                    Nodegraph.utillitieSelectionController.set('content', content);
+                    var tip = SC.$('#tip');
+                    tip.css("left", e.clientX - 320).css("top", e.clientY - 125).css('visibility', 'visible');
+                    tip.html(content.get('name'));
+                }).mouseout(function(e) {
+                        var tip = SC.$('#tip');
+                        tip.css('visibility', 'hidden');
+                    })
+            );
+            bigCircles.rotate(startingAngle, circleLineLeft, circleYPosition);
+            startingAngle += 20;
         }
 
     }
