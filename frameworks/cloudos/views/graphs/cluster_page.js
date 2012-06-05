@@ -7,7 +7,7 @@ COS.clusterGraph = SC.Page.design({
             context.push('<div id="tip" style="position: absolute; left: 0px; top: 0px; height: 20px; width: 100px; background-color: #000000; border: 1px solid black; text-align: center; border-radius: 5px; color: #ffffff; z-index: 1200; visibility: hidden;"></div>');
         },
 
-        lines: COS.ClusterLines.design({}),
+        lines: COS.ClusterView.design({}),
 
         application: SC.View.design({
             classNames: ['silver_gradient', 'standardRadius', 'z_5'],
