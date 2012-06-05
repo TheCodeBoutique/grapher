@@ -16,6 +16,11 @@ Nodegraph.ReadyState = SC.State.extend({
 	fadeIn: function() {
 	  Nodegraph.getPath('mainPage.mainPane.textureView').animate('opacity', 1.0, {duration: 0.8,timing:'ease-in-out'});
 	},
+	
+	showTreeGraph: function() {
+	  console.log("Message");
+	  Nodegraph.viewsController.set('currentView', COS.clusterGraph.interfaceView);
+	},
 
   exitState: function() {
     Nodegraph.getPath('mainPage.mainPane').remove();

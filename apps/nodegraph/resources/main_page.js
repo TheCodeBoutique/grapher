@@ -43,8 +43,8 @@ Nodegraph.mainPage = SC.Page.design({
                         classNames: ['text_style', 'empty_button'],
                         layout: { centerX: 0, left: 110, height: 25, width: 100 },
                         title: 'Tree Graph',
-                        action: 'myMethod',
-                        target: 'MyApp.Controller'
+                        action: 'showTreeGraph',
+                        target: 'Nodegraph.statehchart'
                     }),
 
                     roundGraph: SC.ButtonView.design({

@@ -21,7 +21,7 @@ COS.ClusterView = SC.View.extend({
      * paper.rect().attr('fill', 'fff')
      */
     didCreateLayer: function() {
-        var paper = Raphael(0, 0, window.screen.width, window.screen.height); //build canvas
+        var paper = Raphael(0, 50, window.screen.width, window.screen.height ); //build canvas
         this.set('paper', paper);
 
 
@@ -108,6 +108,7 @@ COS.ClusterView = SC.View.extend({
         // This is the logic that makes the Bottom Nodes go Down //
         for (i; i < 22; i++) {
             paper.rect(bottomlineLeftPostion, bottomLineYPosition, 5, bottomLineHeight).attr("fill", "#666666");
+            square = (i === 18 || i === 20) ? paper.rect(boxLowerLeftPosition, boxLowerYPosition, 35, 35).data("i", i).attr("fill", "yellow") : paper.rect(boxLowerLeftPosition, boxLowerYPosition, 35, 35).data("i", i).attr("fill", "#6fee6f");
             paper.rect(boxLowerLeftPosition, boxLowerYPosition, 35, 35).data("i", i).attr("fill", "#6fee6f").mousemove(function(e) {
                 var content = Nodegraph.utillitiesController.content.objectAt(this.data("i"));
                 Nodegraph.utillitieSelectionController.set('content', content);
@@ -234,6 +235,7 @@ COS.ClusterView = SC.View.extend({
         var startingCircleYpos = 545;
         var circleLinesBottomLeftLength = 140
         for (c = 12; c < 16; c++) {
+
             var bigCircles = paper.set();
             bigCircles.push(
                 paper.rect(1105, 390, 5, 140).attr("fill", "#CCCCCC"),
